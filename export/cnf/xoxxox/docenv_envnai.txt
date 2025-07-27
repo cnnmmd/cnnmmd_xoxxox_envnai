@@ -1,0 +1,14 @@
+FROM ubuntu:24.04
+
+ENV OPTAPT=""
+#ENV OPTAPT="-o Acquire::AllowInsecureRepositories=true -o Acquire::AllowDowngradeToInsecureRepositories=true"
+RUN apt-get ${OPTAPT} -y update
+RUN apt-get ${OPTAPT} -y upgrade
+RUN apt-get ${OPTAPT} -y install python3
+RUN apt-get ${OPTAPT} -y install python3-pip
+RUN apt-get ${OPTAPT} -y install python3-venv
+ENV DIRVIR=/opt/python
+RUN python3 -m venv ${DIRVIR}
+RUN ${DIRVIR}/bin/pip install novelai-api
+RUN ${DIRVIR}/bin/pip install python-dotenv
+RUN ${DIRVIR}/bin/pip install aiohttp
