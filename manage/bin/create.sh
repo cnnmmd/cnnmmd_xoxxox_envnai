@@ -13,10 +13,12 @@ then
   if cnfrtn "import: boilerplate.py: https://github.com/Aedial/novelai-api/blob/main/example/boilerplate.py"
   then
     mkdir -p "${pthlib}"
-    cd "${pthlib}"
-    curl -O https://raw.githubusercontent.com/Aedial/novelai-api/main/example/boilerplate.py
-    "${pthtop}"/manage/bin/remove.sh
-    "${pthtop}"/manage/bin/append.sh
+    if cd "${pthlib}"
+    then
+      curl -O https://raw.githubusercontent.com/Aedial/novelai-api/main/example/boilerplate.py
+      "${pthtop}"/manage/bin/remove.sh
+      "${pthtop}"/manage/bin/append.sh
+    fi
   fi
 fi
 
